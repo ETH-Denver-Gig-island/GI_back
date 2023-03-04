@@ -1,11 +1,29 @@
 {
   "name": "gi-back",
-  "version": "0.0.0",
-  "private": true,
+  "version": "1.0.0",
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "better-npm-run start",
+    "build": "better-npm-run build",
+    "dev": "nodemon --delay 5 --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts",
+    "data_init": "cross-env NODE_ENV=prod ts-node mysql/database_init.ts",
+    "data_dev": "cross-env NODE_ENV=local ts-node mysql/database_init.ts"
+  },
+  "betterScripts": {
+    "start": {
+      "command": "node dist/app.js",
+      "env": {
+        "NODE_ENV": "prod"
+      }
+    },
+    "build": {
+      "command": "tsc -p .",
+      "env": {
+        "NODE_ENV": "prod"
+      }
+    }
   },
   "dependencies": {
+    "better-npm-run": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
