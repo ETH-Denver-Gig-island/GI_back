@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS gidb.Loan
 ) DEFAULT CHARSET = utf8 COMMENT ='Table for loans requested by users to DAOs.';
 
 -- Create WhiteUser table
-CREATE TABLE IF NOT EXISTS gidb.WhiteUser
+CREATE TABLE IF NOT EXISTS gidb.DaoWork
 (
     id         INT          NOT NULL AUTO_INCREMENT, -- unique ID for each registered user
     address    VARCHAR(255) NOT NULL UNIQUE,         -- unique address for each registered user
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS gidb.NFT
     id       INT          NOT NULL AUTO_INCREMENT, -- unique ID for each NFT
     user_id  INT          NOT NULL,                -- ID of the owner of the NFT
     image    VARCHAR(255) NOT NULL,                -- S3 URI for image
-    meta_uri VARCHAR(255) NOT NULL,                -- IPFS URI
+    meta_url VARCHAR(255) NOT NULL,                -- IPFS URI
     mint_id  INT          NOT NULL,                -- ID for NFT minting
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES User (id)
